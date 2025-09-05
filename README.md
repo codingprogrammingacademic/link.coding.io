@@ -18,9 +18,14 @@
 </head>
 <body class="bg-[#F0F4F8]">
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-[#1A202C] mb-2">The Competitive Programmer's Journey</h1>
-            <p class="text-lg text-[#4A5568]">From visual blocks to elite algorithms, this is the path to mastery.</p>
+        <header class="text-center mb-12 relative">
+            <a href="index.zh.html" id="language-switcher" class="absolute top-0 right-0 p-2 bg-[#1D3557] text-white rounded-lg hover:bg-opacity-80 transition-colors">中文</a>
+            <h1 class="text-4xl md:text-5xl font-bold text-[#1A202C] mb-2">
+                The Competitive Programmer's Journey
+            </h1>
+            <p class="text-lg text-[#4A5568]">
+                From visual blocks to elite algorithms, this is the path to mastery.
+            </p>
         </header>
         <main class="relative">
 
