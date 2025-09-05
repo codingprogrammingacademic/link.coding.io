@@ -312,6 +312,11 @@
             </section>
 
         </main>
+        <section id="contact-us" class="mb-12 text-center">
+            <h2 class="text-3xl font-bold text-[#2D3748] mb-4">Contact Us</h2>
+            <p class="text-md text-[#4A5568] mb-2">378 Great Neck Rd, Great Neck, NY</p>
+            <p class="text-md text-[#4A5568]">Phone: <a href="tel:(929)-728-3344" class="text-blue-600 hover:underline">(929)-728-3344</a></p>
+        </section>
     </div>
     <script>
         // Chart.js scripts remain unchanged
