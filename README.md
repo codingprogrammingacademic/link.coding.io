@@ -161,7 +161,7 @@
                 </div>
                 <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">Web Development Branch</h2>
                 <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">Explore front-end web technologies and browser-based game design, building interactive applications and games using modern web standards.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h3 class="font-bold text-xl mb-3 text-[#457B9D]">Web Technology I - Front End</h3>
                         <p class="text-sm text-[#4A5568] mb-4">This course focuses on students developing competency in coding the user experience and user interaction (UI/UX) for front-end, browser-based web applications using HTML, CSS, JavaScript & CSS Frameworks. The student will publish static websites to the internet using traditional web servers and modern object storage while learning current best practices and design patterns for UI/UX website implementation.</p>
@@ -190,6 +190,25 @@
                             <li>Physics & array manipulation</li>
                             <li>Building a playable game portfolio for browsers</li>
                         </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">Linux</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">This foundation course introduces the basics of Linux system administration and security.</p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>Shell commands and processes</li>
+                            <li>Files and directory structure</li>
+                            <li>User and group management</li>
+                            <li>Networking</li>
+                            <li>Shell scripting</li>
+                            <li>Vulnerability analysis</li>
+                            <li>Intrusion detection</li>
+                            <li>Firewall</li>
+                            <li>File system encryption</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">Introduction to Database Systems</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">This course introduces Database Management Systems (DBMS), contrasting them with flat file processing, and covers data abstraction, models, and DML/DDL languages, focusing on relational databases, SQL, and relational algebra (schemas, table keys, operations). Students learn SQL for table creation and queries (joins, aggregation, union), ER modeling with entity sets and relationships (using a university example), database design to avoid redundancy via normalization (BCNF, 3NF), and indexing/hashing (primary/secondary indices, static/dynamic hashing) to optimize data retrieval, enabling them to design and manage efficient database systems.</p>
                     </div>
                 </div>
             </section>
