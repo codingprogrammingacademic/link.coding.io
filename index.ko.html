@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경쟁 프로그래머의 여정</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .flow-line::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); top: 100%; height: 3rem; width: 2px; background-color: #4A5568; }
+        .timeline-icon { background-color: #FFFFFF; border: 2px solid #4A5568; }
+    </style>
+</head>
+<body class="bg-[#F0F4F8]">
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-12 relative">
+            <a href="index.html" id="language-switcher" class="absolute top-0 right-0 p-2 bg-[#1D3557] text-white rounded-lg hover:bg-opacity-80 transition-colors">English</a>
+            <h1 class="text-4xl md:text-5xl font-bold text-[#1A202C] mb-2">
+                경쟁 프로그래머의 여정
+            </h1>
+            <p class="text-lg text-[#4A5568]">
+                비주얼 블록에서 엘리트 알고리즘까지, 이것이 마스터로 가는 길입니다.
+            </p>
+        </header>
+        <main class="relative">
+
+            <!-- Foundation -->
+            <section id="foundation" class="mb-12">
+                <div class="relative text-center mb-6 flow-line">
+                    <div class="w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl timeline-icon">🧩</div>
+                </div>
+                <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">기초: 비주얼 로직</h2>
+                <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">
+                    여정은 비주얼, 블록 기반 프로그래밍을 통해 컴퓨팅 사고력과 문제 해결력을 탄탄히 다지는 것에서 시작합니다.
+                </p>
+                <div class="grid grid-cols-1 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#E63946]">1단계: 스크래치(Scratch)</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            복잡한 문법 없이 비주얼, 블록 기반 시스템을 사용하여 프로그래밍 기초를 학습합니다.
+                        </p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>변수, 반복문, 조건문</li>
+                            <li>이벤트 기반 프로그래밍</li>
+                            <li>문제 해결 사고방식 함양</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Python Path -->
+            <section id="python-path" class="mb-12">
+                <div class="relative text-center mb-6 flow-line">
+                    <div class="w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl timeline-icon">🐍</div>
+                </div>
+                <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">파이썬 경로: 기초부터 고급 응용까지</h2>
+                <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">기본 문법에서 복잡한 응용 프로그램 개발, 자료구조, 객체지향 원리, 강력한 라이브러리까지 모두 익힙니다.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#E63946]">파이썬 1: 핵심 기초</h3>
+                        <p class="text-sm text-[#4A5568]">파이썬 언어의 기초, 변수, 연산자, 조건문, 반복문, 리스트, 함수의 기초 응용을 소개합니다.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#E63946]">파이썬 2: 자료구조 & OOP</h3>
+                        <p class="text-sm text-[#4A5568]">튜플, 집합, 딕셔너리 등 고급 자료구조와 함수의 고급 활용, 객체지향 프로그래밍을 소개합니다.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#E63946]">파이썬 3: 고급 기술</h3>
+                        <p class="text-sm text-[#4A5568]">다차원 리스트, 중첩 반복문, 재귀 함수, 고급 객체지향 프로그래밍 및 파이썬 기본 라이브러리 사용법을 설명합니다.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">파이썬 4: 라이브러리 & 시각화</h3>
+                        <p class="text-sm text-[#4A5568]">다양한 파이썬 표준 및 서드파티 라이브러리 사용법, 그림, 도표, GUI, 애니메이션 등 다양한 응용 프로그램 제작을 다룹니다.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">파이썬 5: 응용 설계</h3>
+                        <p class="text-sm text-[#4A5568]">게임 설계와 데이터 분석을 설명합니다. 주요 강의 내용은 네 가지 간단한 게임의 설계와 개발이며, 마지막에는 데이터 분석을 간단히 소개합니다.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#1D3557]">파이썬 6: 전문화</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            이 과정은 웹사이트 백엔드 개발, 데이터 분석, 전통적인 머신러닝 방법을 다룹니다. 관심 있는 학생들은 이후 데이터 분석, 대형 언어 모델, 이미지 인식, 파이썬 풀스택 개발 과목으로 이어갈 수 있습니다.
+                        </p>
+                        <p class="text-xs text-red-600 mt-2 font-semibold">(이 과정은 AP 미적분 수강생에 한합니다.)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Leap -->
+            <section id="performance-leap" class="mb-12">
+                <div class="relative text-center mb-6 flow-line">
+                    <div class="w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl timeline-icon">🚀</div>
+                </div>
+                <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">성능 도약: C++로의 전환</h2>
+                <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">파이썬은 학습에 탁월하지만, 경쟁 프로그래밍은 최대의 성능을 요구합니다. C++는 복잡한 문제를 짧은 시간 내에 해결할 수 있는 속도와 저수준 제어력을 제공합니다. 이 섹션에서는 이 전환의 중요성을 강조합니다.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">왜 C++인가? 속도와 효율성</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">C++는 컴파일 언어로, 파이썬과 같은 인터프리터 언어보다 훨씬 빠르게 실행됩니다. 아래 차트는 C++가 대회 표준이 되는 개념적 성능 격차를 보여줍니다.</p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>정적 타입으로 오류 예방</li>
+                            <li>표준 템플릿 라이브러리(STL) 숙달</li>
+                            <li>필수 컨테이너: vector, set, map</li>
+                            <li>핵심 알고리즘: sort, binary_search</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="chart-container">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- C++ Courses -->
+            <section id="cpp-courses" class="mb-12">
+                <div class="relative text-center mb-6 flow-line">
+                    <div class="w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl timeline-icon">💻</div>
+                </div>
+                <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">C++ 마스터리 시리즈</h2>
+                <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">
+                    C++ 시퀀스는 문법 기초부터 객체지향, 고급 알고리즘과 고전 문제까지 체계적으로 실력을 쌓을 수 있도록 설계되었습니다.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">C++ 1: 문법 & 기초</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">이 과정에서는 원시 데이터 타입 및 연산자, 기본 입출력, 제어문, 결정, 반복, 함수, 배열, 문자열, 파일 입출력 등 기본 C++ 문법을 다룹니다.</p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>원시 데이터 타입 및 연산자</li>
+                            <li>기본 입출력</li>
+                            <li>제어 흐름(if, switch, 반복문)</li>
+                            <li>함수, 배열, 문자열</li>
+                            <li>기본 파일 입출력</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">C++ 2: 객체지향 프로그래밍</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">이 과정은 C++를 사용한 객체지향 프로그래밍의 원리와 기술(포인터, 클래스, 오버로딩, 추상화, 정보 은닉, 캡슐화, 상속, 다형성, 파일 처리, 템플릿, 예외, 컨테이너 클래스, 저수준 언어 기능 등)을 다룹니다.</p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>포인터 및 메모리 관리</li>
+                            <li>클래스 및 오버로딩</li>
+                            <li>추상화, 캡슐화, 상속</li>
+                            <li>다형성 및 템플릿</li>
+                            <li>예외 및 파일 처리</li>
+                            <li>컨테이너 클래스 및 STL</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">C++ 3: 고전 알고리즘 & 문제</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">여러 고전 문제(8퀸, 8퍼즐, 하노이탑, 최단경로, 안정 결혼, 예쁜 8퀸 출력, 부분집합 합, 비숍 배치 등)를 통해 고급 알고리즘을 익힙니다.</p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>8퀸 문제</li>
+                            <li>8퍼즐</li>
+                            <li>하노이탑</li>
+                            <li>최단 경로 알고리즘</li>
+                            <li>안정 결혼 문제</li>
+                            <li>예쁜 8퀸 출력</li>
+                            <li>부분집합 합 문제</li>
+                            <li>비숍 배치 문제</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Web Development Branch -->
+            <section id="web-technology-branch" class="mb-12">
+                <div class="relative text-center mb-6 flow-line">
+                    <div class="w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl timeline-icon">🌐</div>
+                </div>
+                <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">웹 개발 분기</h2>
+                <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">
+                    프론트엔드 웹 기술과 브라우저 기반 게임 설계를 탐구하며, 최신 웹 표준으로 인터랙티브한 앱과 게임을 만듭니다.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">웹 기술 I - 프론트엔드</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            HTML, CSS, JavaScript, CSS 프레임워크로 프론트엔드, 브라우저 기반 웹앱의 UI/UX 코딩 역량을 기릅니다. 전통 웹서버와 객체 스토리지를 활용해 정적 사이트를 퍼블리시하고, 최신 UI/UX 구현의 베스트 프랙티스와 디자인 패턴을 학습합니다.
+                        </p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>HTML & CSS 언어</li>
+                            <li>CSS & 자바스크립트 프레임워크</li>
+                            <li>반응형 웹 디자인</li>
+                            <li>소스코드/버전 관리</li>
+                            <li>UI/UX 베스트 프랙티스 & 디자인 패턴</li>
+                            <li>웹서버 및 객체 스토리지로 사이트 퍼블리시</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">웹 기반 게임 설계</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            본 과정은 HTML5 Canvas와 바닐라 자바스크립트로 스네이크, 퐁, 스페이스 슈터, 테트리스, 잉크 스필(Flood It) 등의 고전 게임을 직접 개발하며 게임 루프, 충돌 감지, 애니메이션, 점수, 물리, 배열 조작 등 실무 기술을 익힙니다.
+                        </p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>스네이크</li>
+                            <li>퐁(Pong)</li>
+                            <li>스페이스 슈터</li>
+                            <li>테트리스</li>
+                            <li>잉크 스필(Flood It)</li>
+                            <li>게임 루프 & 애니메이션 기초</li>
+                            <li>충돌 감지</li>
+                            <li>점수 시스템</li>
+                            <li>유저 입력 & 이벤트 처리</li>
+                            <li>물리 & 배열 조작</li>
+                            <li>브라우저용 플레이어블 게임 포트폴리오 구축</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">리눅스</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">리눅스 시스템 관리와 보안의 기초를 소개합니다.</p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>쉘 명령어 및 프로세스</li>
+                            <li>파일 및 디렉토리 구조</li>
+                            <li>사용자 및 그룹 관리</li>
+                            <li>네트워킹</li>
+                            <li>쉘 스크립팅</li>
+                            <li>취약점 분석</li>
+                            <li>침입 탐지</li>
+                            <li>방화벽</li>
+                            <li>파일 시스템 암호화</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">데이터베이스 시스템 개론</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            본 과정은 DBMS와 평면 파일 처리의 차이, 데이터 추상화, 데이터 모델, DML/DDL, 관계형 데이터베이스, SQL, 관계 대수, ER모델, 정규화(BCNF, 3NF), 인덱스/해시 등 효율적인 데이터베이스 설계와 관리를 학습합니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AP Courses -->
+            <section id="ap-courses" class="mb-12">
+                <div class="relative text-center mb-6 flow-line">
+                    <div class="w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl timeline-icon">📚</div>
+                </div>
+                <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">AP 컴퓨터 과학 과정</h2>
+                <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">
+                    AP 시험 대비를 위한 컴퓨터 과학 원리, 자바 프로그래밍 기초를 다룹니다.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">AP 컴퓨터 과학 원리</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            AP CSP 과정은 고등학생이 컴퓨터 과학의 핵심 개념(리스트, 2진수, 변수, 데이터 압축, 디지털 격차, 인터넷, 내결함성 시스템, 크라우드소싱, 법적·윤리적 이슈, 협업, 알고리즘 효율, 데이터 추상화, 시뮬레이션, 프로그램 설계, 데이터 분석, 불 표현식, 반복, 이진 탐색, 프로시저, 컴퓨팅 영향, 안전한 컴퓨팅 등 19가지 주제)을 흥미로운 실습 프로젝트(시뮬레이션, 데이터셋 분석, 협업 프로그램 개발 등)로 익히며 AP CSP 시험을 준비합니다.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">자바 프로그래밍 입문 (AP CS A)</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            본 과정은 자바로 필수 컴퓨터 과학 개념을 실습, 문제 해결, 프로젝트 기반 학습으로 익힙니다. 콘솔 I/O, 문자열, 변수, 표현식, 분기, 반복, 함수, 재귀, 배열, 객체지향(클래스, 상속, 다형성), 데이터구조(ArrayList, LinkedList, Map, Set), 예외 처리, 파일 I/O, GUI 개발(AWT/Swing), 검색/정렬 등 17개 주요 주제를 다루며, 자바 프로그래밍, 논리적 사고, 알고리즘 설계의 기초를 탄탄히 다집니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- USACO Arena -->
+            <section id="usaco-arena" class="mb-12">
+                <div class="relative text-center mb-6 flow-line">
+                    <div class="w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl timeline-icon">🏆</div>
+                </div>
+                <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">경쟁의 장: USACO 티어</h2>
+                <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">
+                    USACO(미국 컴퓨팅 올림피아드)는 고등학생을 위한 최고의 프로그래밍 대회입니다. 네 단계로 나눠지며, 각 단계별로 알고리즘과 자료구조에 대한 더 깊은 이해가 필요합니다(아래 스킬 레이더 차트 참고).
+                </p>
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <div class="chart-container h-[400px] md:h-[450px]">
+                        <canvas id="usacoSkillsRadar"></canvas>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#A8DADC]">
+                        <h3 class="font-bold text-xl mb-3 text-[#1D3557]">USACO 브론즈</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            문제 설명을 직접 코드로 옮기는 구현력이 가장 중요합니다.
+                        </p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>완전탐색/브루트포스</li>
+                            <li>규칙 시뮬레이션</li>
+                            <li>기본 자료구조 및 정렬</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#457B9D]">
+                        <h3 class="font-bold text-xl mb-3 text-[#1D3557]">USACO 실버</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            시간 제한을 통과하려면 표준적이고 효율적인 알고리즘을 알아야 합니다.
+                        </p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>이진 탐색</li>
+                            <li>그리디 알고리즘</li>
+                            <li>그래프 탐색(DFS, BFS)</li>
+                            <li>누적합/투 포인터</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#1D3557]">
+                        <h3 class="font-bold text-xl mb-3 text-[#1D3557]">USACO 골드</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            고급 알고리즘과 자료구조를 마스터하여 복잡하고 다단계 문제를 해결해야 합니다.
+                        </p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>동적 프로그래밍(DP)</li>
+                            <li>고급 그래프 알고리즘(Dijkstra 등)</li>
+                            <li>유니온파인드(DSU)</li>
+                            <li>선분 트리 입문</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-[#E63946]">
+                        <h3 class="font-bold text-xl mb-3 text-[#1D3557]">USACO 플래티넘</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            기발한 통찰이나 기존 알고리즘의 변형이 필요한 최상위 단계입니다.
+                        </p>
+                        <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
+                            <li>고급 DP 최적화</li>
+                            <li>복잡한 자료구조</li>
+                            <li>네트워크 플로우 알고리즘</li>
+                            <li>계산 기하</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Research Specialization -->
+            <section id="ai-research" class="mb-12">
+                <div class="relative text-center mb-6 flow-line">
+                    <div class="w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl timeline-icon">🤖</div>
+                </div>
+                <h2 class="text-center text-3xl font-bold text-[#2D3748] mb-4">AI 연구 전문화</h2>
+                <p class="text-center text-md text-[#4A5568] max-w-3xl mx-auto mb-8">
+                    USACO 브론즈를 마치고 실버로 진급한 학생을 위한 고급 AI 과정입니다. 미국 AI 올림피아드(USAAIO)를 준비하며, 첨단 AI 연구 및 응용에 중점을 둡니다.
+                </p>
+                <p class="text-center text-xs text-red-600 font-semibold mb-4">
+                    (선수과목: USACO 브론즈 이수 및 실버 진급)
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#1D3557]">머신러닝</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            본 과정은 머신러닝 및 통계적 패턴 인식의 폭넓은 기초를 다룹니다. 지도학습, 비지도학습, 학습이론, 강화학습, 적응제어, 분류, 회귀, 군집화, 다양한 알고리즘, 최신 응용 사례, 실습 등 폭넓게 익힙니다.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#1D3557]">자연어처리(NLP)</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            본 과정은 언어 모델, 워드 임베딩, 전처리, 특징 추출, 품사 태깅, 구문 분석, 정보검색, 텍스트 분류, 감정 분석, 시퀀스 모델(HMM, CRF), BERT, GPT, 기계번역, 질의응답, 챗봇 등 다양한 주제를 최신 NLP 라이브러리와 실습 과제로 익히며, 편향·공정성 등 언어 기술의 도전 과제도 다룹니다.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl mb-3 text-[#1D3557]">컴퓨터 비전</h3>
+                        <p class="text-sm text-[#4A5568] mb-4">
+                            본 과정은 OpenCV, TensorFlow, PyTorch 등 라이브러리로 이미지 생성, 표현, 필터링, 특징 추출, 분할, 객체 탐지, 인식, 모션 분석, 3D 비전, CNN, 전이학습, 비전 트랜스포머 등 컴퓨터 비전의 원리와 실습을 자율주행, 얼굴 인식, 의료 영상, AR, 영상 분석 등 실제 적용 사례로 익힙니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        <section id="contact-us" class="mb-12 text-center">
+            <h2 class="text-3xl font-bold text-[#2D3748] mb-4">문의하기</h2>
+            <p class="text-md text-[#4A5568] mb-2">378 Great Neck Rd, Great Neck, NY</p>
+            <p class="text-md text-[#4A5568]">
+                전화: <a href="tel:(929)-728-3344" class="text-blue-600 hover:underline">(929)-728-3344</a>
+            </p>
+        </section>
+    </div>
+    <script>
+        // Chart.js scripts in Korean
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) { return label.join(' '); }
+            return label;
+        };
+        const processLabels = (labels) => {
+            return labels.map(label => {
+                if (label.length > 16) {
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    for (const word of words) {
+                        if ((currentLine + ' ' + word).trim().length > 16 && currentLine.length > 0) {
+                            lines.push(currentLine);
+                            currentLine = word;
+                        } else {
+                            currentLine = (currentLine + ' ' + word).trim();
+                        }
+                    }
+                    if (currentLine) { lines.push(currentLine); }
+                    return lines;
+                }
+                return label;
+            });
+        };
+        const performanceColors = ['#A8DADC', '#E63946'];
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(performanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['학습 및 프로토타입 용이성', '실행 속도'],
+                datasets: [
+                    { label: '파이썬', data: [90, 30], backgroundColor: performanceColors[0], borderColor: performanceColors[0], borderWidth: 1 },
+                    { label: 'C++', data: [50, 95], backgroundColor: performanceColors[1], borderColor: performanceColors[1], borderWidth: 1 }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                indexAxis: 'y',
+                scales: {
+                    x: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { display: false } },
+                    y: { grid: { display: false } }
+                },
+                plugins: {
+                    legend: { position: 'top', },
+                    title: { display: true, text: '개념적 언어 트레이드오프' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        const usacoColors = ['#A8DADC', '#457B9D', '#1D3557', '#E63946'];
+        const usacoSkillsCtx = document.getElementById('usacoSkillsRadar').getContext('2d');
+        const usacoSkillsRadar = new Chart(usacoSkillsCtx, {
+            type: 'radar',
+            data: {
+                labels: processLabels(['구현력', '기본 알고리즘', '고급 알고리즘 및 자료구조', '문제 해결 창의성']),
+                datasets: [
+                    { label: '브론즈', data: [9, 3, 1, 2], borderColor: usacoColors[0], backgroundColor: 'rgba(168, 218, 220, 0.2)', },
+                    { label: '실버', data: [7, 8, 3, 5], borderColor: usacoColors[1], backgroundColor: 'rgba(69, 123, 157, 0.2)', },
+                    { label: '골드', data: [6, 7, 8, 8], borderColor: usacoColors[2], backgroundColor: 'rgba(29, 53, 87, 0.2)', },
+                    { label: '플래티넘', data: [5, 6, 9, 10], borderColor: usacoColors[3], backgroundColor: 'rgba(230, 57, 70, 0.2)', }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    r: {
+                        angleLines: { display: true },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        pointLabels: { font: { size: 14 } }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top', },
+                    title: { display: true, text: 'USACO 티어별 스킬 요구도' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
