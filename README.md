@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +20,10 @@
 <body class="bg-[#F0F4F8]">
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
         <header class="text-center mb-12 relative">
-            <a href="index.ch.html" id="language-switcher" class="absolute top-0 right-0 p-2 bg-[#1D3557] text-white rounded-lg hover:bg-opacity-80 transition-colors">中文</a>
+            <div class="absolute top-0 right-0 flex flex-col items-end space-y-2">
+                <a href="index.zh.html" id="language-switcher" class="p-2 bg-[#1D3557] text-white rounded-lg hover:bg-opacity-80 transition-colors">中文</a>
+                <a href="index.ko.html" id="language-switcher-ko" class="p-2 bg-[#1D3557] text-white rounded-lg hover:bg-opacity-80 transition-colors">한국어</a>
+            </div>
             <h1 class="text-4xl md:text-5xl font-bold text-[#1A202C] mb-2">
                 The Competitive Programmer's Journey
             </h1>
