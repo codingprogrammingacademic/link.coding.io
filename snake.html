@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    #startScreen {
+      margin-top: 40px;
+      text-align: center;
+    }
+    #startButton {
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #22d3ee;
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #startButton:hover {
+      background-color: #0ea5e9;
+    }
+    #stats {
+      display: none;
+      font-size: 18px;
+      margin: 6px 0;
+    }
+    .canvas-container {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    canvas {
+      display: none;
+      background: black;
+      border: 2px solid #22d3ee;
+      box-sizing: border-box;
+      max-width: 100vw;
+      max-height: calc(100vh - 110px); /* 110px for header/stats/padding */
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Start Screen -->
+  <div id="startScreen">
+    <h1>🐍 Welcome to Snake Game</h1>
+    <button id="startButton">Start Game</button>
+  </div>
+
+  <!-- Stats -->
+  <div id="stats">
+    <p>Score: <span id="score">0</span> | High Score: <span id="highScore">0</span></p>
+  </div>
+
+  <!-- Game Canvas -->
+  <div class="canvas-container">
+    <canvas id="gameCanvas"></canvas>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const startScreen = document.getElementById('startScreen');
+    const startButton = document.getElementById('startButton');
+    const stats = document.getElementById('stats');
+    const scoreDisplay = document.getElementById('score');
+    const highScoreDisplay = document.getElementById('highScore');
+
+    const GRID_COUNT = 20; // Always 20x20 grid
+    let GRID_SIZE = 20;    // Will be updated on resize
+    let snake, direction, food, gameLoop, gameRunning;
+    let score = 0, highScore = 0;
+
+    // Responsive canvas
+    function resizeCanvas() {
+      // Leave 110px for stats and some margin
+      const availableWidth = window.innerWidth - 10;
+      const availableHeight = window.innerHeight - (stats.offsetHeight || 30) - 110;
+      const size = Math.max(Math.min(availableWidth, availableHeight), 200);
+      canvas.width = size;
+      canvas.height = size;
+      GRID_SIZE = size / GRID_COUNT;
+    }
+
+    function resetGame() {
+      resizeCanvas();
+      snake = [{ x: Math.floor(GRID_COUNT / 2), y: Math.floor(GRID_COUNT / 2) }];
+      direction = 'right';
+      food = generateFood();
+      score = 0;
+      updateStats();
+    }
+
+    function generateFood() {
+      let fx, fy, onSnake;
+      do {
+        fx = Math.floor(Math.random() * GRID_COUNT);
+        fy = Math.floor(Math.random() * GRID_COUNT);
+        onSnake = snake && snake.some(s => s.x === fx && s.y === fy);
+      } while (onSnake);
+      return { x: fx, y: fy };
+    }
+
+    function clearCanvas() {
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function drawCell(x, y, color) {
+      ctx.fillStyle = color;
+      ctx.fillRect(x * GRID_SIZE, y * GRID_SIZE, GRID_SIZE - 1, GRID_SIZE - 1);
+    }
+
+    function drawSnake() {
+      snake.forEach((segment, i) => {
+        const color = i === 0 ? '#22d3ee' : '#60a5fa';
+        drawCell(segment.x, segment.y, color);
+      });
+    }
+
+    function drawFood() {
+      drawCell(food.x, food.y, 'red');
+    }
+
+    function moveSnake() {
+      let head = { ...snake[0] };
+      if (direction === 'up') head.y -= 1;
+      if (direction === 'down') head.y += 1;
+      if (direction === 'left') head.x -= 1;
+      if (direction === 'right') head.x += 1;
+
+      if (head.x < 0 || head.x >= GRID_COUNT || head.y < 0 || head.y >= GRID_COUNT) {
+        endGame();
+        return;
+      }
+      if (snake.some(s => s.x === head.x && s.y === head.y)) {
+        endGame();
+        return;
+      }
+
+      snake.unshift(head);
+
+      if (head.x === food.x && head.y === food.y) {
+        food = generateFood();
+        score++;
+        if (score > highScore) highScore = score;
+        updateStats();
+      } else {
+        snake.pop();
+      }
+    }
+
+    function gameUpdate() {
+      moveSnake();
+      clearCanvas();
+      drawSnake();
+      drawFood();
+    }
+
+    function setupControls() {
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp' && direction !== 'down') direction = 'up';
+        if (e.key === 'ArrowDown' && direction !== 'up') direction = 'down';
+        if (e.key === 'ArrowLeft' && direction !== 'right') direction = 'left';
+        if (e.key === 'ArrowRight' && direction !== 'left') direction = 'right';
+      });
+    }
+
+    function updateStats() {
+      scoreDisplay.textContent = score;
+      highScoreDisplay.textContent = highScore;
+    }
+
+    function startGame() {
+      if (!gameRunning) {
+        resetGame();
+        clearCanvas();
+        drawSnake();
+        drawFood();
+        gameRunning = true;
+        stats.style.display = "block";
+        canvas.style.display = "block";
+        gameLoop = setInterval(gameUpdate, 120);
+      }
+    }
+
+    function endGame() {
+      clearInterval(gameLoop);
+      alert("Game Over! Your score: " + score);
+      gameRunning = false;
+      canvas.style.display = "none";
+      stats.style.display = "none";
+      startScreen.style.display = "block";
+    }
+
+    function redraw() {
+      resizeCanvas();
+      if (gameRunning) {
+        clearCanvas();
+        drawSnake();
+        drawFood();
+      }
+    }
+
+    function init() {
+      setupControls();
+      window.addEventListener('resize', redraw);
+      // Initial sizing for start screen
+      resizeCanvas();
+    }
+
+    startButton.addEventListener("click", () => {
+      startScreen.style.display = "none";
+      startGame();
+    });
+
+    window.onload = init;
+  </script>
+</body>
+</html>

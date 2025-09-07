@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shooter Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            overflow: hidden;
+        }
+        canvas {
+            border: 2px solid white;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <button id="startButton">Start Game</button>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const startButton = document.getElementById('startButton');
+
+        // Base game dimensions (reference resolution)
+        const BASE_WIDTH = 1000;
+        const BASE_HEIGHT = 700;
+        let scale = 1;
+
+        // Game state variables
+        let gameLoop;
+        let isGameRunning = false;
+        let score = 0;
+        let maxScore = 0;
+        let lives = 1;
+
+        // Game objects
+        let player = {
+            x: BASE_WIDTH / 2,
+            y: BASE_HEIGHT - 20,
+            speed: 5
+        };
+        let bullets = [];
+        let aliens = [];
+        let rows = 3;
+        let cols = 10;
+        let alienWidth = 40;
+        let alienHeight = 30;
+        let alienSpeed = 2;
+        let waveCount = 0;
+        let shipImage = new Image();
+        shipImage.src = 'ship.png';
+        let alienImage = new Image();
+        alienImage.src = 'alien.png';
+
+        // Resize canvas to fit browser window while maintaining aspect ratio
+        function resizeCanvas() {
+            const aspectRatio = BASE_WIDTH / BASE_HEIGHT;
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+
+            if (width / height > aspectRatio) {
+                width = height * aspectRatio;
+            } else {
+                height = width / aspectRatio;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            scale = width / BASE_WIDTH;
+
+            // Update player position to scale with canvas
+            player.x = (BASE_WIDTH / 2) * scale;
+            player.y = (BASE_HEIGHT - 20) * scale;
+
+            // Update aliens' positions
+            aliens.forEach(alien => {
+                alien.x *= scale / (alien.x / BASE_WIDTH);
+                alien.y *= scale / (alien.y / BASE_HEIGHT);
+            });
+
+            // Update bullets' positions
+            bullets.forEach(bullet => {
+                bullet.x *= scale / (bullet.x / BASE_WIDTH);
+                bullet.y *= scale / (bullet.y / BASE_HEIGHT);
+            });
+        }
+
+        function resetAliens() {
+            aliens = [];
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    aliens.push({
+                        x: (col * (alienWidth + alienWidth) + 100) * scale,
+                        y: (row * (alienHeight + alienHeight/2) + 30) * scale,
+                        speed: alienSpeed * scale,
+                        direction: 1,
+                        alive: true
+                    });
+                }
+            }
+            waveCount++;
+            alienSpeed = Math.min(alienSpeed + 0.2, 5);
+        }
+
+        function startGameLoop() {
+            startButton.style.display = 'none';
+            isGameRunning = true;
+            score = 0;
+            lives = 1;
+            resetAliens();
+            gameLoop = setInterval(() => {
+                update();
+                render();
+            }, 1000 / 60);
+        }
+
+        function update() {
+            if (!isGameRunning) return;
+
+            // Handle player movement
+            if (keys.ArrowLeft) {
+                player.x -= player.speed * scale;
+                if (player.x < shipImage.width / 2 * scale) player.x = shipImage.width / 2 * scale;
+            }
+            if (keys.ArrowRight) {
+                player.x += player.speed * scale;
+                if (player.x > canvas.width - shipImage.width / 2 * scale) player.x = canvas.width - shipImage.width / 2 * scale;
+            }
+
+            // Handle shooting
+            if (keys.Space && isGameRunning && bullets.length < 3) {
+                bullets.push({ x: player.x, y: player.y - shipImage.height / 2 * scale });
+                keys.Space = false;
+            }
+
+            // Update bullets
+            for (let i = bullets.length - 1; i >= 0; i--) {
+                bullets[i].y -= 5 * scale;
+                for (let alien of aliens) {
+                    if (alien.alive && checkCollision(bullets[i], alien)) {
+                        alien.alive = false;
+                        score++;
+                        maxScore = Math.max(maxScore, score);
+                        bullets.splice(i, 1);
+                        break;
+                    }
+                }
+                if (bullets[i] && bullets[i].y < 0) bullets.splice(i, 1);
+            }
+
+            // Update alien movement
+            let directionChange = false;
+            for (let alien of aliens) {
+                if (alien.alive) {
+                    alien.x += (alien.direction * alien.speed);
+                    if (alien.x > canvas.width - alienWidth / 2 * scale || alien.x < alienWidth / 2 * scale) {
+                        directionChange = true;
+                    }
+                    if (checkCollisionShip(alien, player)) {
+                        lives--;
+                        resetAliens();
+                        if (lives <= 0) {
+                            isGameRunning = false;
+                            startButton.style.display = 'block';
+                            alert("Game Over!");
+                        }
+                    }
+                }
+            }
+            if (directionChange) {
+                for (let alien of aliens) {
+                    alien.direction *= -1;
+                    alien.y += alienHeight / 2 * scale;
+                }
+            }
+
+            if (!aliens.some(alien => alien.alive)) {
+                resetAliens();
+            }
+        }
+
+        function checkCollision(bullet, alien) {
+            let bulletLeft = bullet.x - 2 * scale;
+            let bulletRight = bullet.x + 2 * scale;
+            let bulletTop = bullet.y - 5 * scale;
+            let bulletBottom = bullet.y + 5 * scale;
+            let alienLeft = alien.x - alienWidth / 2 * scale;
+            let alienRight = alien.x + alienWidth / 2 * scale;
+            let alienTop = alien.y - alienHeight / 2 * scale;
+            let alienBottom = alien.y + alienHeight / 2 * scale;
+
+            return !(bulletLeft > alienRight ||
+                     bulletRight < alienLeft ||
+                     bulletTop > alienBottom ||
+                     bulletBottom < alienTop);
+        }
+
+        function checkCollisionShip(alien, player) {
+            let alienLeft = alien.x - alienWidth / 2 * scale;
+            let alienRight = alien.x + alienWidth / 2 * scale;
+            let alienTop = alien.y - alienHeight / 2 * scale;
+            let alienBottom = alien.y + alienHeight / 2 * scale;
+            let playerLeft = player.x - shipImage.width / 2 * scale;
+            let playerRight = player.x + shipImage.width / 2 * scale;
+            let playerTop = player.y - shipImage.height / 2 * scale;
+            let playerBottom = player.y + shipImage.height / 2 * scale;
+
+            return !(alienLeft > playerRight ||
+                     alienRight < playerLeft ||
+                     alienTop > playerBottom ||
+                     alienBottom < playerTop);
+        }
+
+        function render() {
+            ctx.fillStyle = 'rgb(230, 230, 230)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw player
+            ctx.drawImage(shipImage, player.x - shipImage.width / 2 * scale, player.y - shipImage.height / 2 * scale, shipImage.width * scale, shipImage.height * scale);
+
+            // Draw aliens
+            for (let alien of aliens) {
+                if (alien.alive) {
+                    ctx.drawImage(alienImage, alien.x - alienImage.width / 2 * scale, alien.y - alienImage.height / 2 * scale, alienImage.width * scale, alienImage.height * scale);
+                }
+            }
+
+            // Draw bullets
+            for (let bullet of bullets) {
+                ctx.fillStyle = 'red';
+                ctx.fillRect(bullet.x - 2 * scale, bullet.y - 5 * scale, 4 * scale, 10 * scale);
+            }
+
+            // Draw game stats
+            ctx.fillStyle = 'black';
+            ctx.font = `${20 * scale}px Arial`;
+            ctx.textAlign = 'left';
+            ctx.fillText(`Score: ${score}`, 10 * scale, 20 * scale);
+            ctx.fillText(`Max Score: ${maxScore}`, 10 * scale, 50 * scale);
+            ctx.textAlign = 'right';
+            ctx.fillText(`Lives: ${lives}`, canvas.width - 10 * scale, 20 * scale);
+        }
+
+        const keys = {
+            ArrowLeft: false,
+            ArrowRight: false,
+            Space: false
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (keys.hasOwnProperty(e.code)) {
+                keys[e.code] = true;
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (keys.hasOwnProperty(e.code)) {
+                keys[e.code] = false;
+            }
+        });
+
+        startButton.addEventListener('click', startGameLoop);
+        window.addEventListener('resize', resizeCanvas);
+
+        // Initial canvas resize
+        resizeCanvas();
+    </script>
+</body>
+</html>
