@@ -20,7 +20,7 @@
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
         <header class="text-center mb-12 relative">
             <div class="absolute top-0 right-0 flex flex-col items-end space-y-2">
-                <a href="index.ch.html" id="language-switcher" class="p-2 bg-[#1D3557] text-white rounded-lg hover:bg-opacity-80 transition-colors">中文</a>
+                <a href="index.zh.html" id="language-switcher" class="p-2 bg-[#1D3557] text-white rounded-lg hover:bg-opacity-80 transition-colors">中文</a>
                 <a href="index.ko.html" id="language-switcher-ko" class="p-2 bg-[#1D3557] text-white rounded-lg hover:bg-opacity-80 transition-colors">한국어</a>
             </div>
             <h1 class="text-4xl md:text-5xl font-bold text-[#1A202C] mb-2">
@@ -183,7 +183,11 @@
                         </ul>
                     </div>
                     <div class="bg-white rounded-lg shadow-md p-6">
-                        <h3 class="font-bold text-xl mb-3 text-[#457B9D]">Web Based Game Design</h3>
+                        <h3 class="font-bold text-xl mb-3">
+                            <a href="index.game.html" class="text-[#457B9D] hover:text-[#1D3557] transition-colors">
+                                Web Based Game Design
+                            </a>
+                        </h3>
                         <p class="text-sm text-[#4A5568] mb-4">This course is about creating Interactive Webpage Games, a hands-on course designed for aspiring developers and enthusiasts eager to build classic arcade-style games using vanilla JavaScript and HTML5 Canvas! Perfect for beginners with basic HTML, CSS, and JavaScript knowledge, this course guides you through creating five iconic browser-based games—Snake, Pong, Space Shooter, Tetris, and Ink Spill (a Flood It clone)—step by step, covering game loops, collision detection, animations, scoring, and more. With no game engines required, you’ll master practical skills like physics, user input, and array manipulation while building a portfolio of playable games that run in any modern browser.</p>
                         <ul class="list-disc list-inside text-[#4A5568] space-y-2 text-sm">
                             <li>Snake</li>
@@ -199,6 +203,7 @@
                             <li>Building a playable game portfolio for browsers</li>
                         </ul>
                     </div>
+                    
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h3 class="font-bold text-xl mb-3 text-[#457B9D]">Linux</h3>
                         <p class="text-sm text-[#4A5568] mb-4">This foundation course introduces the basics of Linux system administration and security.</p>
