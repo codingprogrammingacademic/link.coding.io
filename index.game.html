@@ -20,6 +20,9 @@
     header {
       text-align: center;
       padding: 2vw;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
     }
     header h1 {
       font-size: calc(1.5rem + 0.5vw);
@@ -30,6 +33,23 @@
       color: #457b9d;
       margin-top: 0.5rem;
       font-size: calc(0.9rem + 0.3vw);
+    }
+
+    .home-btn {
+      position: absolute;
+      top: 2vw;
+      right: 2vw;
+      padding: 0.8vw 1.6vw;
+      font-size: calc(0.8rem + 0.2vw);
+      background: #457b9d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .home-btn:hover {
+      background: #1d3557;
     }
 
     .layout {
@@ -143,6 +163,11 @@
       .panel {
         min-height: 400px;
       }
+      .home-btn {
+        top: 1.5vw;
+        right: 1.5vw;
+        padding: 0.6vw 1.2vw;
+      }
     }
 
     @media (max-width: 600px) {
@@ -155,6 +180,10 @@
       header p {
         font-size: calc(0.8rem + 0.2vw);
       }
+      .home-btn {
+        font-size: calc(0.7rem + 0.2vw);
+        padding: 0.5vw 1vw;
+      }
     }
   </style>
 </head>
@@ -162,6 +191,7 @@
   <header>
     <h1>🎮 Game Hub</h1>
     <p>Select a game to play.</p>
+    <button id="homeBtn" class="home-btn">Home</button>
   </header>
 
   <div class="layout">
@@ -220,6 +250,7 @@
     const stage = document.getElementById('stage');
     const currentGame = document.getElementById('currentGame');
     const placeholder = document.getElementById('placeholder');
+    const homeBtn = document.getElementById('homeBtn');
     const buttons = Array.from(document.querySelectorAll('.game-btn'));
 
     function setActive(btn) {
@@ -242,6 +273,10 @@
       btn.addEventListener('click', () => {
         loadGame(btn.getAttribute('data-path'), btn);
       });
+    });
+
+    homeBtn.addEventListener('click', () => {
+      window.location.href = 'index.html';
     });
   </script>
 </body>
